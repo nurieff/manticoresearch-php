@@ -22,6 +22,8 @@ use Manticoresearch\Query\ScriptFields;
  */
 class Search
 {
+    use FilterAliases;
+
     /**
      * @var Client
      */
@@ -159,7 +161,7 @@ class Search
             case 'in':
                 $this->query->must(new In($attr, $values));
                 break;
-            case 'equals':
+            default:
                 $this->query->must(new Equals($attr, $values[0]));
                 break;
         }
@@ -193,7 +195,7 @@ class Search
             case 'in':
                 $this->query->should(new In($attr, $values));
                 break;
-            case 'equals':
+            default:
                 $this->query->should(new Equals($attr, $values[0]));
                 break;
         }
@@ -226,9 +228,10 @@ class Search
                 ]));
                 break;
             case 'in':
+
                 $this->query->mustNot(new In($attr, $values));
                 break;
-            case 'equals':
+            default:
                 $this->query->mustNot(new Equals($attr, $values[0]));
                 break;
         }
