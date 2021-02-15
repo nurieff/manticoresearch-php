@@ -228,7 +228,6 @@ class Search
                 ]));
                 break;
             case 'in':
-
                 $this->query->mustNot(new In($attr, $values));
                 break;
             case 'equals':
