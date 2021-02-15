@@ -42,7 +42,7 @@ trait FilterAliases
 
     public function whereNot($attr, $op, $value = null): self
     {
-        return $this->where($attr, $op, $value = null);
+        return $this->notFilter($attr, $op, $value = null);
     }
 
     public function whereIn($attr, array $values, $boolean = 'AND'): self
