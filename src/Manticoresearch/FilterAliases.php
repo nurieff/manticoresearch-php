@@ -12,7 +12,7 @@ namespace Manticoresearch;
 trait FilterAliases
 {
     protected static $replaceOperator = [
-        '=' => '',
+        '=' => 'equals',
         '>=' => 'gte',
         '>' => 'gt',
         '<' => 'lt',
@@ -37,12 +37,12 @@ trait FilterAliases
 
     public function orWhere($attr, $op, $value = null): self
     {
-        return $this->where($attr, $op, $value = null);
+        return $this->where($attr, $op, $value);
     }
 
     public function whereNot($attr, $op, $value = null): self
     {
-        return $this->notFilter($attr, $op, $value = null);
+        return $this->notFilter($attr, $op, $value);
     }
 
     public function whereIn($attr, array $values, $boolean = 'AND'): self

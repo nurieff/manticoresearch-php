@@ -161,7 +161,7 @@ class Search
             case 'in':
                 $this->query->must(new In($attr, $values));
                 break;
-            default:
+            case 'equals':
                 $this->query->must(new Equals($attr, $values[0]));
                 break;
         }
@@ -195,7 +195,7 @@ class Search
             case 'in':
                 $this->query->should(new In($attr, $values));
                 break;
-            default:
+            case 'equals':
                 $this->query->should(new Equals($attr, $values[0]));
                 break;
         }
@@ -231,7 +231,7 @@ class Search
 
                 $this->query->mustNot(new In($attr, $values));
                 break;
-            default:
+            case 'equals':
                 $this->query->mustNot(new Equals($attr, $values[0]));
                 break;
         }
